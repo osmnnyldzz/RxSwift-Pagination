@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
- 
+    
     @IBOutlet weak var tableView: UITableView!
+    private var disposeBag = DisposeBag()
     
     let createDummyArray:[String] = {
         var array:[String] = []
@@ -22,23 +25,36 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.bindTableView()
+
     }
 }
 
-extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+// MARK: Rx Setup
+extension ViewController {
+    
+    func bindTableView() {
+        Observable.of(self.createDummyArray)
+            .bind(to: self.tableView
+                .rx
+                .items(cellIdentifier: MyTableViewCell.cellIdentifier,
+                       cellType: MyTableViewCell.self))
+        { index, element, cell in
+            cell.textLabel?.text = element
+        }
+        .disposed(by: disposeBag)
         
     }
 }
 
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return createDummyArray.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = self.createDummyArray[indexPath.row]
-        return cell
+
+// MARK: TableViewCell
+class MyTableViewCell: UITableViewCell {
+    static let cellIdentifier = "MyTableViewCell"
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+        
     }
 }
 
