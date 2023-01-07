@@ -12,16 +12,10 @@ import RxCocoa
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
     private var disposeBag = DisposeBag()
-    
-    let createDummyArray:[String] = {
-        var array:[String] = []
-        for i in 0...20 {
-            array.append("Title: \(i)")
-        }
-        return array
-    }()
-    
+    private var viewModel = MyViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,29 +28,16 @@ class ViewController: UIViewController {
 extension ViewController {
     
     func bindTableView() {
-        Observable.of(self.createDummyArray)
+        self.viewModel.dummyArray
             .bind(to: self.tableView
                 .rx
                 .items(cellIdentifier: MyTableViewCell.cellIdentifier,
                        cellType: MyTableViewCell.self))
         { index, element, cell in
-            cell.textLabel?.text = element
+            cell.titleLabel.text = element
         }
         .disposed(by: disposeBag)
         
     }
-}
-
-
-// MARK: TableViewCell
-class MyTableViewCell: UITableViewCell {
-    static let cellIdentifier = "MyTableViewCell"
     
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
 }
-
-
-
