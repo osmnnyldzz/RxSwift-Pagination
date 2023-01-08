@@ -16,6 +16,8 @@
 		A0F0D842296A174F006CE6AA /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0D841296A174F006CE6AA /* MyViewModel.swift */; };
 		A0F0D845296A1C00006CE6AA /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0D844296A1C00006CE6AA /* MyTableViewCell.swift */; };
 		A0F0D84D296AAD9C006CE6AA /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0D84C296AAD9C006CE6AA /* ApiRouter.swift */; };
+		A0F0D84F296AC74F006CE6AA /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0D84E296AC74F006CE6AA /* ApiClient.swift */; };
+		A0F0D852296AC7C6006CE6AA /* ModeratorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0D851296AC7C6006CE6AA /* ModeratorResponse.swift */; };
 		C2121A6BDF836B9A71AB0A3B /* Pods_RxSwift_Pagination.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61827D380C456C84B5C1AFF2 /* Pods_RxSwift_Pagination.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		A0F0D841296A174F006CE6AA /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 		A0F0D844296A1C00006CE6AA /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		A0F0D84C296AAD9C006CE6AA /* ApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
+		A0F0D84E296AC74F006CE6AA /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		A0F0D851296AC7C6006CE6AA /* ModeratorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeratorResponse.swift; sourceTree = "<group>"; };
 		D04D4ADDCC7FA109DE5EA463 /* Pods-RxSwift-Pagination.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift-Pagination.release.xcconfig"; path = "Target Support Files/Pods-RxSwift-Pagination/Pods-RxSwift-Pagination.release.xcconfig"; sourceTree = "<group>"; };
 		F1125DCE0CA80EE0D01464CC /* Pods-RxSwift-Pagination.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift-Pagination.debug.xcconfig"; path = "Target Support Files/Pods-RxSwift-Pagination/Pods-RxSwift-Pagination.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				A0F0D84C296AAD9C006CE6AA /* ApiRouter.swift */,
+				A0F0D84E296AC74F006CE6AA /* ApiClient.swift */,
+				A0F0D851296AC7C6006CE6AA /* ModeratorResponse.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -239,11 +245,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0F0D84F296AC74F006CE6AA /* ApiClient.swift in Sources */,
 				A0F0D8322969741B006CE6AA /* ViewController.swift in Sources */,
 				A0F0D82E2969741B006CE6AA /* AppDelegate.swift in Sources */,
 				A0F0D842296A174F006CE6AA /* MyViewModel.swift in Sources */,
 				A0F0D845296A1C00006CE6AA /* MyTableViewCell.swift in Sources */,
 				A0F0D8302969741B006CE6AA /* SceneDelegate.swift in Sources */,
+				A0F0D852296AC7C6006CE6AA /* ModeratorResponse.swift in Sources */,
 				A0F0D84D296AAD9C006CE6AA /* ApiRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

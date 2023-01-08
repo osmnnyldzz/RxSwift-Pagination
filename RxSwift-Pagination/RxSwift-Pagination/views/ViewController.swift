@@ -20,7 +20,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.bindTableView()
-
+        
+        // Fetch server data
+        self.viewModel.fetchModerators()
     }
 }
 
