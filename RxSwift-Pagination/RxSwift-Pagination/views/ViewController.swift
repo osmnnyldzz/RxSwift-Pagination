@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         self.subscribeResponse()
         
         self.subscribeLoading()
-        
+        self.subscribePrefetch()
         // Fetch server data
         self.viewModel.fetchModerators()
     }
@@ -50,7 +50,13 @@ extension ViewController {
                 .items(cellIdentifier: MyTableViewCell.cellIdentifier,
                        cellType: MyTableViewCell.self))
         { index, element, cell in
+            
             cell.titleLabel.text = element.displayName
+            
+            let status = self.currentVisibleRow(for: IndexPath(row: index, section: 0))
+            cell.configuration(status)
+
+            
         }
         .disposed(by: disposeBag)
         
@@ -71,8 +77,24 @@ extension ViewController {
             }
             .disposed(by: self.disposeBag)
     }
+    
+    private func subscribePrefetch() {
+        self.tableView
+            .rx
+            .prefetchRows
+            .subscribe { indexPaths in
+            guard let indexPaths = indexPaths.element else { return }
+                
+            if indexPaths.contains(where: self.currentVisibleRow) {
+                self.viewModel.fetchModerators(true)
+            }
+                
+                
+            }.disposed(by: self.disposeBag)
+    }
 }
 
+// MARK: Helpers
 extension ViewController {
     
     func loadingView(show:Bool = true){
@@ -86,6 +108,10 @@ extension ViewController {
         } else {
             loadingScreen.removeFromSuperview()
         }
+    }
+    
+    func currentVisibleRow(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= viewModel.moderators.value.count - 1
     }
 }
    

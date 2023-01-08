@@ -9,7 +9,7 @@ import Alamofire
 
 enum ApiRouter: URLRequestConvertible {
     
-    case fetchModerators
+    case fetchModerators(page:Int)
     
     func asURLRequest() throws -> URLRequest {
         let baseurl = "https://api.stackexchange.com/2.3"
@@ -21,8 +21,13 @@ enum ApiRouter: URLRequestConvertible {
     // Parameters
     var parameters: Parameters {
         switch self {
-        case .fetchModerators:
-            return ["site":"stackoverflow"]
+        case .fetchModerators(let page):
+            return [
+                "site":"stackoverflow",
+                "page": page,
+                "pagesize":20
+                
+            ]
         }
     }
     
@@ -38,7 +43,9 @@ enum ApiRouter: URLRequestConvertible {
     var path: String {
         switch self {
         case .fetchModerators:
-            return "/users/moderators"
+            // When too many requests are made, the service restricts the IP.
+            // I changed the moderator to users.
+            return "/users"
         }
     }   
 }

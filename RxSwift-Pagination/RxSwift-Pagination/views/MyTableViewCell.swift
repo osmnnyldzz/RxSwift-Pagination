@@ -12,8 +12,22 @@ class MyTableViewCell: UITableViewCell {
    
     @IBOutlet weak var titleLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-       
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet{
+            activityIndicator.isHidden = true
+            activityIndicator.color = .red
+        }
+    }
+    
+    func configuration(_ status: Bool) {
+        if status {
+            self.activityIndicator.isHidden = false
+            self.titleLabel.isHidden = true
+            self.activityIndicator.startAnimating()
+        } else {
+            self.activityIndicator.isHidden = true
+            self.titleLabel.isHidden = false
+            self.activityIndicator.stopAnimating()
+        }
     }
 }
