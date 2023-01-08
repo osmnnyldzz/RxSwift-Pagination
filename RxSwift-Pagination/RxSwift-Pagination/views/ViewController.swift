@@ -13,13 +13,27 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .blue
+        return indicator
+    }()
+    
+    var loadingScreen: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
     private var disposeBag = DisposeBag()
     private var viewModel = MyViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.bindTableView()
+        self.subscribeResponse()
+        
+        self.subscribeLoading()
         
         // Fetch server data
         self.viewModel.fetchModerators()
@@ -29,7 +43,7 @@ class ViewController: UIViewController {
 // MARK: Rx Setup
 extension ViewController {
     
-    func bindTableView() {
+    private func subscribeResponse() {
         self.viewModel.moderators
             .bind(to: self.tableView
                 .rx
@@ -42,4 +56,36 @@ extension ViewController {
         
     }
     
+    private func subscribeLoading() {
+        self.viewModel
+            .loading
+            .subscribe { value in
+                switch value.element {
+                case true:
+                    return self.loadingView(show:true)
+                case false:
+                    return self.loadingView(show:false)
+                default:
+                    break
+                }
+            }
+            .disposed(by: self.disposeBag)
+    }
 }
+
+extension ViewController {
+    
+    func loadingView(show:Bool = true){
+        if show {
+            loadingScreen.frame = self.view.bounds
+            activityIndicator.center = self.view.center
+            activityIndicator.startAnimating()
+            loadingScreen.addSubview(activityIndicator)
+           
+            self.view.addSubview(loadingScreen)
+        } else {
+            loadingScreen.removeFromSuperview()
+        }
+    }
+}
+   
