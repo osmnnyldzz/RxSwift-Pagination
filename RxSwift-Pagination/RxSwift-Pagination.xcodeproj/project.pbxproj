@@ -15,6 +15,7 @@
 		A0F0D83A2969741D006CE6AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F0D8382969741D006CE6AA /* LaunchScreen.storyboard */; };
 		A0F0D842296A174F006CE6AA /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0D841296A174F006CE6AA /* MyViewModel.swift */; };
 		A0F0D845296A1C00006CE6AA /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0D844296A1C00006CE6AA /* MyTableViewCell.swift */; };
+		A0F0D84D296AAD9C006CE6AA /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0D84C296AAD9C006CE6AA /* ApiRouter.swift */; };
 		C2121A6BDF836B9A71AB0A3B /* Pods_RxSwift_Pagination.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61827D380C456C84B5C1AFF2 /* Pods_RxSwift_Pagination.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		A0F0D83B2969741D006CE6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0F0D841296A174F006CE6AA /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 		A0F0D844296A1C00006CE6AA /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		A0F0D84C296AAD9C006CE6AA /* ApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
 		D04D4ADDCC7FA109DE5EA463 /* Pods-RxSwift-Pagination.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift-Pagination.release.xcconfig"; path = "Target Support Files/Pods-RxSwift-Pagination/Pods-RxSwift-Pagination.release.xcconfig"; sourceTree = "<group>"; };
 		F1125DCE0CA80EE0D01464CC /* Pods-RxSwift-Pagination.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift-Pagination.debug.xcconfig"; path = "Target Support Files/Pods-RxSwift-Pagination/Pods-RxSwift-Pagination.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				A0F0D82C2969741B006CE6AA /* RxSwift-Pagination */,
+				A0F0D848296A1E75006CE6AA /* resources */,
 				A0F0D82B2969741B006CE6AA /* Products */,
 				27BC2C67F6D1875305A243A4 /* Pods */,
 				AAB6675DCAEE09D54E016D68 /* Frameworks */,
@@ -76,17 +79,41 @@
 		A0F0D82C2969741B006CE6AA /* RxSwift-Pagination */ = {
 			isa = PBXGroup;
 			children = (
+				A0F0D847296A1E5A006CE6AA /* views */,
+				A0F0D846296A1E54006CE6AA /* service */,
 				A0F0D82D2969741B006CE6AA /* AppDelegate.swift */,
 				A0F0D82F2969741B006CE6AA /* SceneDelegate.swift */,
-				A0F0D8312969741B006CE6AA /* ViewController.swift */,
-				A0F0D841296A174F006CE6AA /* MyViewModel.swift */,
-				A0F0D8332969741B006CE6AA /* Main.storyboard */,
-				A0F0D8362969741D006CE6AA /* Assets.xcassets */,
-				A0F0D8382969741D006CE6AA /* LaunchScreen.storyboard */,
 				A0F0D83B2969741D006CE6AA /* Info.plist */,
-				A0F0D844296A1C00006CE6AA /* MyTableViewCell.swift */,
 			);
 			path = "RxSwift-Pagination";
+			sourceTree = "<group>";
+		};
+		A0F0D846296A1E54006CE6AA /* service */ = {
+			isa = PBXGroup;
+			children = (
+				A0F0D84C296AAD9C006CE6AA /* ApiRouter.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		A0F0D847296A1E5A006CE6AA /* views */ = {
+			isa = PBXGroup;
+			children = (
+				A0F0D8332969741B006CE6AA /* Main.storyboard */,
+				A0F0D8312969741B006CE6AA /* ViewController.swift */,
+				A0F0D841296A174F006CE6AA /* MyViewModel.swift */,
+				A0F0D844296A1C00006CE6AA /* MyTableViewCell.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		A0F0D848296A1E75006CE6AA /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				A0F0D8382969741D006CE6AA /* LaunchScreen.storyboard */,
+				A0F0D8362969741D006CE6AA /* Assets.xcassets */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 		AAB6675DCAEE09D54E016D68 /* Frameworks */ = {
@@ -217,6 +244,7 @@
 				A0F0D842296A174F006CE6AA /* MyViewModel.swift in Sources */,
 				A0F0D845296A1C00006CE6AA /* MyTableViewCell.swift in Sources */,
 				A0F0D8302969741B006CE6AA /* SceneDelegate.swift in Sources */,
+				A0F0D84D296AAD9C006CE6AA /* ApiRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
