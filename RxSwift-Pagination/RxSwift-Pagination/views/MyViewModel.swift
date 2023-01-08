@@ -9,20 +9,17 @@ import RxSwift
 import RxCocoa
 
 class MyViewModel {
-    var dummyArray = BehaviorRelay<[String]>.init(value: [])
+    var moderators = BehaviorRelay<[Moderator]>.init(value: [])
     var apiClient = ApiClient()
 
-    init() {
-        self.createDummyArray()
-    }
-    
     func fetchModerators() {
-        self.apiClient.request(ApiRouter.fetchModerators)
-    }
-    
-    private func createDummyArray() {
-        for i in 0...20 {
-            self.dummyArray.accept(self.dummyArray.value + ["Title: \(i)"])
+        self.apiClient.request(ApiRouter.fetchModerators) { response in
+            switch response {
+            case.success(let response):
+                self.moderators.accept(response.items)
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }

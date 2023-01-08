@@ -8,13 +8,18 @@
 import Alamofire
 
 class ApiClient {
-    func request(_ urlConvertible: URLRequestConvertible) {
+    func request(_ urlConvertible: URLRequestConvertible,
+                 _ completion: @escaping (Result<ModeratorResponse, AFError>) -> Void ) {
+        
         AF.request(urlConvertible).responseDecodable(of:ModeratorResponse.self) { (response) in
             switch response.result {
+                
             case .failure(let error):
-                print("Result: Error \(error)")
-            case .success(let data):
-                print("Result: Success \(data.items.first?.userId)")
+                completion(.failure(error))
+                
+            case .success(let value):
+                completion(.success(value))
+                
             }
         }
     }

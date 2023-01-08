@@ -30,13 +30,13 @@ class ViewController: UIViewController {
 extension ViewController {
     
     func bindTableView() {
-        self.viewModel.dummyArray
+        self.viewModel.moderators
             .bind(to: self.tableView
                 .rx
                 .items(cellIdentifier: MyTableViewCell.cellIdentifier,
                        cellType: MyTableViewCell.self))
         { index, element, cell in
-            cell.titleLabel.text = element
+            cell.titleLabel.text = element.displayName
         }
         .disposed(by: disposeBag)
         

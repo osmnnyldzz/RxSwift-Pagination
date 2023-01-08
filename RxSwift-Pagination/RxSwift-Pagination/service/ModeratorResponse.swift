@@ -18,9 +18,11 @@ class ModeratorResponse: Codable {
 
 class Moderator: Codable {
     var userId:Int
+    var displayName:String
     
     enum CodingKeys: String,CodingKey {
         case userId = "user_id"
+        case displayName = "display_name"
     }
 }
 
